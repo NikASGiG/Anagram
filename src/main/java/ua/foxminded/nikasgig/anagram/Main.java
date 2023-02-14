@@ -10,16 +10,16 @@ public class Main {
         String exampleLine1 = "abcd efgh"; // "abcd efgh" => "dcba hgfe"
         String exampleLine2 = "a1bcd efg!h"; // "a1bcd efg!h" => "d1cba hgf!e"
         String exampleLine3 = "a1bcd"; // "a1bcd" => "d1cba"
-        Reverser reverser = new Reverser();
+        AnagramService convertor = new AnagramService();
         System.out.println("--------Test---------");
-        System.out.println(exampleLine1 + " => " + reverser.convertLineToAnagram(exampleLine1));
-        System.out.println(exampleLine2 + " => " + reverser.convertLineToAnagram(exampleLine2));
-        System.out.println(exampleLine3 + " => " + reverser.convertLineToAnagram(exampleLine3));
+        System.out.println(exampleLine1 + " => " + convertor.convertLine(exampleLine1));
+        System.out.println(exampleLine2 + " => " + convertor.convertLine(exampleLine2));
+        System.out.println(exampleLine3 + " => " + convertor.convertLine(exampleLine3));
         System.out.println("---------------------");
         System.out.print("Input your string: ");
-        String yourInput = scanner.nextLine();
+        String inputLine = scanner.nextLine();
         System.out.println();
-        System.out.println(yourInput + " => " + reverser.convertLineToAnagram(yourInput));
+        System.out.println(inputLine + " => " + convertor.convertLine(inputLine));
         scanner.close();
     }
 }
