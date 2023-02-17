@@ -8,35 +8,32 @@ public class AnagramService {
             return inputLine;
         }
         String[] words = inputLine.split(SPACE);
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < words.length; i++) {
-            result += convertWord(words[i]) + SPACE;
+            result.append(reverseWord(words[i])).append(SPACE);
         }
-        return result.trim();
+        return result.toString().trim();
     }
 
     private boolean isValidate(final String inputLine) {
         return !(inputLine == null || inputLine.trim().isEmpty());
     }
 
-    private String convertWord(final String inputLine) {
-        char[] list = inputLine.toCharArray();
-        int beginCounter = 0;
-        int endCounter = list.length-1;
-        char temporaryChar;
-        while (beginCounter < endCounter) {
-            while (!Character.isLetter(list[beginCounter])) {
-                beginCounter++;
+    private String reverseWord(final String word) {
+        StringBuilder resultWord = new StringBuilder();
+        int endIndex = word.length() - 1;
+        for (int i = 0; i < word.length(); i++) {
+            if (Character.isLetter(word.charAt(i))) {
+                while (!Character.isLetter(word.charAt(endIndex))) {
+                    endIndex--;
+                }
+                resultWord.append(word.charAt(endIndex));
+                endIndex--;
+            } else {
+                resultWord.append(word.charAt(i));
             }
-            temporaryChar = list[beginCounter];
-            while (!Character.isLetter(list[endCounter])) {
-                endCounter--;
-            }
-            list[beginCounter] = list[endCounter];
-            list[endCounter] = temporaryChar;
-            beginCounter++;
-            endCounter--;
         }
-        return new String(list);
+        return resultWord.toString();
     }
+
 }
